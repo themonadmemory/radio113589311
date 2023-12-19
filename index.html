@@ -103,6 +103,17 @@
             background-color: #333;
             color: #fff;
         }
+
+        #song-name {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+            color: pink;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, color 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -138,23 +149,24 @@
             <button id="play-btn" onclick="togglePlayPause()">Play</button>
             <button id="next-btn" onclick="playNext()">Next</button>
         </div>
+        <div id="song-name">Song Name</div>
     </div>
 
     <ul id="playlist">
         <!-- Ajoutez ici les morceaux avec la classe "song" -->
-        <li class="song" data-src="08 - Cafo.mp3">01 - Cafo</li>
-        <li class="song" data-src="01.Chokehold.mp3">02 - Chokehold</li>
-        <li class="song" data-src="ALEX TERRIBLE - DOOM SLAYER.mp3">03 - DOOM SLAYER</li>
-        <li class="song" data-src="01 - Kirisute Gomen.mp3">04 - Kirisute Gomen</li>
-        <li class="song" data-src="05 - Aftermath.mp3">05 - Aftermath</li>
-        <li class="song" data-src="03 - Fantazia A Rhapsody In Blue Themaira.mp3">06 - Fantazia A Rhapsody In Blue Themaira</li>
-        <li class="song" data-src="02 - Midnight Nation.mp3">07 - Midnight Nation</li>
-        <li class="song" data-src="01 - Initiation.mp3">08 - Initiation</li>
-        <li class="song" data-src="04 - Judge.mp3">09 - Judge</li>
-        <li class="song" data-src="07 - F.E.A.R. Transmission 2 Trust.mp3">10 - F.E.A.R. Transmission 2 Trust</li>
-        <li class="song" data-src="13 - The Crusade.mp3">11 - The Crusade</li>
-        <li class="song" data-src="10. The Club (Provocation Mix).mp3">12 - The Club (Provocation Mix)</li>
-        <li class="song" data-src="01 - Fightman.mp3">13 - Fightman</li>
+        <li class="song" data-src="08 - Cafo.mp3">ANIMAL AS LEADERS - CAFO</li>
+        <li class="song" data-src="01.Chokehold.mp3">SLEEPTOKEN - CHOKEHOLD</li>
+        <li class="song" data-src="ALEX TERRIBLE - DOOM SLAYER.mp3">ALEX TERRIBLE - DOOM SLAYER</li>
+        <li class="song" data-src="01 - Kirisute Gomen.mp3">TRIVIUM - KIRISUTE GOMEN</li>
+        <li class="song" data-src="05 - Aftermath.mp3">STRAPING YOUNG LAD - AFTERMATH</li>
+        <li class="song" data-src="03 - Fantazia A Rhapsody In Blue Themaira.mp3">SKORPIO - FANTAZIA A RHAPSODY IN BLUE THEMAIRA</li>
+        <li class="song" data-src="02 - Midnight Nation.mp3">BOBAFLEX - MIDNIGHT NATION</li>
+        <li class="song" data-src="01 - Initiation.mp3">BLEEDSEASON - INITIATION</li>
+        <li class="song" data-src="04 - Judge.mp3">BLEEDSEASON - JUDGE</li>
+        <li class="song" data-src="07 - F.E.A.R. Transmission 2 Trust.mp3">BLACK VEIL BRIDES - F.E.A.R. TRANSMISSION 2 TRUST</li>
+        <li class="song" data-src="13 - The Crusade.mp3">TRIVIUM - THE CRUSADE</li>
+        <li class="song" data-src="10. The Club (Provocation Mix).mp3">DAVANTAGE - THE CLUB (PROVOCATION MIX)</li>
+        <li class="song" data-src="01 - Fightman.mp3">CASIOPEA - FIGHTMAN</li>
     
         <!-- Ajoutez d'autres morceaux ici -->
     </ul>
@@ -163,11 +175,6 @@
         <audio controls id="audio-player" onended="playNext()">
             <!-- Le lecteur sera configuré ici -->
         </audio>
-    </div>
-
-    <div class="button-container">
-        <button id="telegram-link"><a href="https://t.me/Radio113689311" style="text-decoration: none; color: #fff;">T</a></button>
-        <button id="x-link"><a href="https://x.com/crash_113589311?s=21" style="text-decoration: none; color: #fff;">X</a></button>
     </div>
 
     <script>
@@ -187,6 +194,43 @@
         function updatePlayer() {
             var tracks = playlist.children;
             player.src = tracks[currentIndex].dataset.src;
+            updateSongName(tracks[currentIndex].innerText);
+        }
+
+        function updateSongName(name) {
+            var songNameElement = document.getElementById('song-name');
+            songNameElement.innerText = name;
+
+            // Effet visuel
+            songNameElement.style.color = getRandomColor();
+            songNameElement.style.opacity = 1;
+
+            // Déclencher la disparition progressive
+            setTimeout(function() {
+                fadeOut(songNameElement);
+            }, 2000); // Temps d'affichage du nom du morceau
+        }
+
+        function fadeOut(element) {
+            var opacity = 1;
+            var interval = setInterval(function() {
+                if (opacity <= 0.1) {
+                    clearInterval(interval);
+                    element.style.opacity = 0;
+                } else {
+                    element.style.opacity = opacity;
+                    opacity -= 0.1;
+                }
+            }, 100);
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
 
         function togglePlayPause() {
