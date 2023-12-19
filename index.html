@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADIO 113589311</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        #playlist {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .song {
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        #player {
+            margin-top: 20px;
+        }
+
+        #telegram-link, #x-link {
+            display: block;
+            margin-top: 20px;
+        }
+
+        #gif-section {
+            margin-top: 20px;
+        }
+
+        #gif {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>RADIO 113589311</h1>
+        <div id="gif-section">
+            <img src="https://media2.giphy.com/media/78s4AN5lqpg6g2KoXP/giphy.gif?cid=2154d3d7kbv39ibs1x8k9upn4iuw3q62560tm98p2rz3i90p&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="GIF" id="gif">
+        </div>
+    </div>
+
+    <ul id="playlist">
+        <!-- Ajoutez ici les morceaux avec la classe "song" -->
+        <!-- Exemple : <li class="song" data-src="lien_vers_votre_morceau.mp3">Nom du morceau</li> -->
+    </ul>
+
+    <div id="player">
+        <audio controls id="audio-player">
+            <!-- Le lecteur sera configuré ici -->
+        </audio>
+    </div>
+
+    <a href="https://t.me/Radio113689311" id="telegram-link" target="_blank">Rejoignez-nous sur Telegram</a>
+    <a href="https://x.com/crash_113589311?s=21" id="x-link" target="_blank">Compte X</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var playlist = document.getElementById('playlist');
+            var player = document.getElementById('audio-player');
+
+            // Ajoutez vos morceaux à la playlist
+            // Exemple : playlist.innerHTML += '<li class="song" data-src="lien_vers_votre_morceau.mp3">Nom du morceau</li>';
+
+            // Configurez le lecteur audio avec le premier morceau
+            // Exemple : player.src = playlist.firstElementChild.dataset.src;
+        });
+    </script>
+
+</body>
+</html>
