@@ -39,11 +39,6 @@
             margin-top: 20px;
         }
 
-        #telegram-link, #x-link {
-            display: block;
-            margin-top: 20px;
-        }
-
         #gif-section {
             margin-top: 20px;
         }
@@ -51,6 +46,11 @@
         #gif {
             max-width: 100%;
             height: auto;
+        }
+
+        #telegram-link, #x-link {
+            display: block;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -65,7 +65,9 @@
 
     <ul id="playlist">
         <!-- Ajoutez ici les morceaux avec la classe "song" -->
-        <!-- Exemple : <li class="song" data-src="lien_vers_votre_morceau.mp3">Nom du morceau</li> -->
+        <li class="song" data-src="lien_vers_morceau_1.mp3">Morceau 1</li>
+        <li class="song" data-src="lien_vers_morceau_2.mp3">Morceau 2</li>
+        <!-- Ajoutez d'autres morceaux ici -->
     </ul>
 
     <div id="player">
@@ -81,12 +83,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             var playlist = document.getElementById('playlist');
             var player = document.getElementById('audio-player');
+            var defaultTrack = playlist.firstElementChild;
 
             // Ajoutez vos morceaux à la playlist
             // Exemple : playlist.innerHTML += '<li class="song" data-src="lien_vers_votre_morceau.mp3">Nom du morceau</li>';
 
             // Configurez le lecteur audio avec le premier morceau
-            // Exemple : player.src = playlist.firstElementChild.dataset.src;
+            // Exemple : player.src = defaultTrack.dataset.src;
         });
     </script>
 
