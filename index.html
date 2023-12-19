@@ -89,6 +89,17 @@
             transition: background-color 0.3s ease-in-out;
         }
 
+        #song-name {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+            color: pink;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, color 0.5s ease-in-out;
+        }
+
         #telegram-link, #x-link {
             display: block;
             margin-top: 20px;
@@ -102,17 +113,6 @@
             margin-top: 10px;
             background-color: #333;
             color: #fff;
-        }
-
-        #song-name {
-            position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5em;
-            color: pink;
-            opacity: 0;
-            transition: opacity 1s ease-in-out, color 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -148,17 +148,17 @@
             <button id="prev-btn" onclick="playPrev()">Prev</button>
             <button id="play-btn" onclick="togglePlayPause()">Play</button>
             <button id="next-btn" onclick="playNext()">Next</button>
+            <div id="song-name">Song Name</div>
         </div>
-        <div id="song-name">Song Name</div>
     </div>
 
     <ul id="playlist">
         <!-- Ajoutez ici les morceaux avec la classe "song" -->
         <li class="song" data-src="08 - Cafo.mp3">ANIMAL AS LEADERS - CAFO</li>
-        <li class="song" data-src="01.Chokehold.mp3">SLEEPTOKEN - CHOKEHOLD</li>
+        <li class="song" data-src="01. Chokehold.mp3">SLEEPTOKEN - CHOKEHOLD</li>
         <li class="song" data-src="ALEX TERRIBLE - DOOM SLAYER.mp3">ALEX TERRIBLE - DOOM SLAYER</li>
         <li class="song" data-src="01 - Kirisute Gomen.mp3">TRIVIUM - KIRISUTE GOMEN</li>
-        <li class="song" data-src="05 - Aftermath.mp3">STRAPING YOUNG LAD - AFTERMATH</li>
+        <li class="song" data-src="05 - Aftermath.mp3">STRAPPING YOUNG LAD - AFTERMATH</li>
         <li class="song" data-src="03 - Fantazia A Rhapsody In Blue Themaira.mp3">SKORPIO - FANTAZIA A RHAPSODY IN BLUE THEMAIRA</li>
         <li class="song" data-src="02 - Midnight Nation.mp3">BOBAFLEX - MIDNIGHT NATION</li>
         <li class="song" data-src="01 - Initiation.mp3">BLEEDSEASON - INITIATION</li>
