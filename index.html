@@ -51,35 +51,42 @@
         #gif-section {
             position: relative;
             overflow: hidden;
+            height: 70vh; /* Ajuster la hauteur du GIF */
         }
 
         #gif {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            width: auto;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        #play-btn, #next-btn, #prev-btn {
+        .button-container {
             position: absolute;
-            bottom: 10%;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%; /* Ajuster la largeur de la boîte des boutons */
             background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            background-color: #333;
             color: #fff;
             border: none;
             border-radius: 50%;
             padding: 15px;
-            margin: 10px;
             cursor: pointer;
             font-size: 14px;
-        }
-
-        #next-btn {
-            right: 10%;
-        }
-
-        #prev-btn {
-            left: 10%;
+            transition: background-color 0.3s ease-in-out;
         }
 
         #telegram-link, #x-link {
@@ -95,29 +102,6 @@
             margin-top: 10px;
             background-color: #333;
             color: #fff;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .button-container button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            padding: 15px;
-            margin: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .button-container button:hover {
-            background-color: #555;
         }
     </style>
 </head>
@@ -148,13 +132,12 @@
     </script>
 
     <div id="gif-section">
-        <video id="gif" autoplay loop muted playsinline>
-            <source src="https://giphy.com/clips/palm-trees-palms-hi8-daIK2AonyRJcR2dJfh.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <button id="play-btn" onclick="togglePlayPause()">Play</button>
-        <button id="next-btn" onclick="playNext()">Next</button>
-        <button id="prev-btn" onclick="playPrev()">Prev</button>
+        <img id="gif" src="https://giphy.com/clips/palm-trees-palms-hi8-daIK2AonyRJcR2dJfh.mp4" alt="GIF">
+        <div class="button-container">
+            <button id="prev-btn" onclick="playPrev()">Prev</button>
+            <button id="play-btn" onclick="togglePlayPause()">Play</button>
+            <button id="next-btn" onclick="playNext()">Next</button>
+        </div>
     </div>
 
     <ul id="playlist">
@@ -181,13 +164,6 @@
             <!-- Le lecteur sera configuré ici -->
         </audio>
     </div>
-
-    <div class="button-container">
-        <button onclick="togglePlayPause()">Play/Pause</button>
-    </div>
-
-    <a href="https://t.me/Radio113689311" id="telegram-link" target="_blank">TELEGRAM</a>
-    <a href="https://x.com/crash_113589311?s=21" id="x-link" target="_blank">X</a>
 
     <script>
         var player = document.getElementById('audio-player');
