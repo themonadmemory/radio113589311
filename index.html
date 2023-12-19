@@ -11,11 +11,11 @@
             text-align: center;
             margin: 0;
             overflow: hidden;
+            color: #fff;
         }
 
         #header {
             background-color: #333;
-            color: #fff;
             padding: 20px;
         }
 
@@ -66,13 +66,38 @@
             display: block;
             margin-top: 20px;
             color: #fff;
+            text-decoration: none;
         }
 
         #audio-player {
+            display: none;
             width: 100%;
             margin-top: 10px;
             background-color: #333;
             color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .button-container button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .button-container button:hover {
+            background-color: #555;
         }
     </style>
 </head>
@@ -98,6 +123,12 @@
         </audio>
     </div>
 
+    <div class="button-container">
+        <button onclick="playTrack(0)">1</button>
+        <button onclick="playTrack(1)">2</button>
+        <!-- Ajoutez d'autres boutons ici pour les autres morceaux -->
+    </div>
+
     <a href="https://t.me/Radio113689311" id="telegram-link" target="_blank">TELEGRAM</a>
     <a href="https://x.com/crash_113589311?s=21" id="x-link" target="_blank">X</a>
 
@@ -113,6 +144,22 @@
             // Configurez le lecteur audio avec le premier morceau
             // Exemple : player.src = defaultTrack.dataset.src;
         });
+
+        function playTrack(trackIndex) {
+            var player = document.getElementById('audio-player');
+            var playlist = document.getElementById('playlist');
+            var track = playlist.children[trackIndex];
+
+            // Configurez le lecteur audio avec le morceau sélectionné
+            player.src = track.dataset.src;
+
+            // Affichez le lecteur audio et masquez la liste de lecture
+            player.style.display = 'block';
+            playlist.style.display = 'none';
+
+            // Lancez la lecture automatique
+            player.play();
+        }
     </script>
 
 </body>
